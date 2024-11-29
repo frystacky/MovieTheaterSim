@@ -10,7 +10,7 @@ public class PlayerPickUpDrop : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("PickUp"))
         {
             //not carrying object, try to grab one
             if (objectGrabbable == null)
