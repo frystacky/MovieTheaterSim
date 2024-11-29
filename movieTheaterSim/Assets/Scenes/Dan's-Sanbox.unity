@@ -842,6 +842,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   objectGrabPointTransform: {fileID: 1948507110}
+  pickUpDistance: 2
 --- !u!43 &833455905
 Mesh:
   m_ObjectHideFlags: 0
@@ -1369,7 +1370,7 @@ Rigidbody:
   m_GameObject: {fileID: 995736557}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 5
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1399,6 +1400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaadce53adfcd842b783b36d3724c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 547551140}
+  throwForce: 500
 --- !u!1 &1061899450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4459864851310106424, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
@@ -1964,7 +1967,7 @@ Transform:
   m_GameObject: {fileID: 1866342130}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.5, z: -55.68}
+  m_LocalPosition: {x: 0, y: 7.5, z: -54.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1995,7 +1998,7 @@ Transform:
   m_GameObject: {fileID: 1948507109}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: -0.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

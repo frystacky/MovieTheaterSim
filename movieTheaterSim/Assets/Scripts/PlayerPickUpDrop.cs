@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerPickUpDrop : MonoBehaviour
@@ -5,6 +6,7 @@ public class PlayerPickUpDrop : MonoBehaviour
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private LayerMask pickUpLayerMask;
     [SerializeField] private Transform objectGrabPointTransform;
+    [SerializeField] private float pickUpDistance = 2f;
 
     private ObjectGrabbable objectGrabbable;
 
@@ -15,7 +17,6 @@ public class PlayerPickUpDrop : MonoBehaviour
             //not carrying object, try to grab one
             if (objectGrabbable == null)
             {
-                float pickUpDistance = 2f;
                 if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
                 {
                     //Debug.Log(raycastHit.transform);
@@ -33,6 +34,12 @@ public class PlayerPickUpDrop : MonoBehaviour
                 objectGrabbable = null;
             }
             
+        }
+        //throw carring object
+        if (Input.GetKeyDown(KeyCode.Mouse0) && objectGrabbable != null)
+        {
+            objectGrabbable.ThrowObject();
+            objectGrabbable = null;
         }
     }
 }
