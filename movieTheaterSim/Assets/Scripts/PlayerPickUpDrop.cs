@@ -12,6 +12,7 @@ public class PlayerPickUpDrop : MonoBehaviour
 
     private void Update()
     {
+        //pick up object with objectGrabbable script attached, key is mapped in input manager
         if (Input.GetButtonDown("PickUp"))
         {
             //not carrying object, try to grab one
@@ -35,8 +36,8 @@ public class PlayerPickUpDrop : MonoBehaviour
             }
             
         }
-        //throw carring object
-        if (Input.GetKeyDown(KeyCode.Mouse0) && objectGrabbable != null)
+        //throw carring object, key is mapped in input manager
+        if (Input.GetButtonDown("Throw") && objectGrabbable != null)
         {
             objectGrabbable.ThrowObject();
             objectGrabbable = null;
