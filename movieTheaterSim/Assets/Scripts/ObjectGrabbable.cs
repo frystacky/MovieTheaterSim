@@ -6,7 +6,7 @@ public class ObjectGrabbable : MonoBehaviour
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
 
-    public float throwForce = 500f; //force at which the object is thrown at
+    [SerializeField] private float throwForce = 500f; //force at which the object is thrown at
 
     private void Awake()
     {
@@ -27,18 +27,18 @@ public class ObjectGrabbable : MonoBehaviour
         objectRigidbody.useGravity = true;
         objectRigidbody.transform.parent = null;
         Physics.IgnoreCollision(objectRigidbody.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        transform.rotation = Quaternion.Euler(0f, 0f, 0f); //trys and make sure the object drops stright down
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f); //trys and make sure the object drops straight down
     }
 
     public void ThrowObject()
     {
-        //same as drop function, but add force to object before undefining it
+        //same as drop function, but adds force to object before undefining it
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.transform.parent = null;
         Physics.IgnoreCollision(objectRigidbody.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         objectRigidbody.AddForce(transform.forward * throwForce);
-        transform.rotation = Quaternion.Euler(0f, 0f, 0f); //trys and make sure the object drops stright down
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f); //trys and make sure the object drops straight down
     }
 
     private void FixedUpdate()

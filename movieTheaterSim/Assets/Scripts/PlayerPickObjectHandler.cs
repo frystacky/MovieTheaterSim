@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerPickUpDrop : MonoBehaviour
+public class PlayerPickObjectHandler : MonoBehaviour
 {
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private LayerMask pickUpLayerMask;
@@ -30,7 +30,7 @@ public class PlayerPickUpDrop : MonoBehaviour
             }
             else
             {
-                // carrying a grabbed object, drop it
+                //carrying a grabbed object, drop it
                 objectGrabbable.Drop();
                 objectGrabbable = null;
             }
