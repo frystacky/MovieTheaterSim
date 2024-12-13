@@ -1,62 +1,77 @@
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Unity.VisualScripting;
 using UnityEditor.Search;
 using UnityEngine;
 
 public class ItemObjectHandler : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> items = new List<GameObject> { };
-
-    public void AddItem()
+    [SerializeField] private List<GameObject> itemSlot = new List<GameObject> { }; //tracks frontend data
+    [SerializeField] public Stack<GameObject> stack = new Stack<GameObject>();     //tracks backend data
+    [SerializeField] private int maxItemSize;
+   
+    private void Awake()
     {
-        foreach (GameObject item in items)
+        //set the size of the premade list to know how many objects were added
+        maxItemSize = itemSlot.Count;
+
+        //add items to referance to it in the backend
+        foreach (var item in itemSlot)
         {
-            if (item.activeSelf == false)
+            //get item child and add it to stack
+            if (item != null && item.gameObject.transform.childCount > 0)
             {
-                item.SetActive(true);
-                break;
+                Debug.Log(item.transform.GetChild(0).gameObject);
+                stack.Push(item.transform.GetChild(0).gameObject);
             }
         }
     }
-    public void RemoveItem()
-    {
-        foreach (GameObject item in items)
+
+    public void AddItem(GameObject objectToAdd)
+    {       
+        //get the size of stack to know where we can place object in list
+        int itemSize = stack.Count;
+
+        //makes sure that we cannot add more items than the size of objects inventory
+        if (itemSize < maxItemSize) //TODO: check for type later
         {
-            if (item.activeSelf == true)
-            {
-                item.SetActive(false);
-                break;
-            }
+
+            objectToAdd.transform.parent = itemSlot[stack.Count].transform;   //add to the next empty element
+            stack.Push(objectToAdd);
+            Debug.Log("IN HERE2");
         }
+
+    }
+    public GameObject RemoveItem()
+    {
+        GameObject gameObject = stack.Peek();
+        stack.Pop();
+
+        return gameObject;
+
     }
 
     //helper function to see if items can be added
     public bool AbleToAddItem()
     {
-        foreach (GameObject item in items)
+        if(stack.Count <= maxItemSize)
         {
-            if (item.activeSelf == false)
-            {
-                Debug.Log("Able to added item");
-                return true;
-            }
+            return true;
         }
-        Debug.Log("NOT Able to added item");
+
         return false;
     }
 
     //helper function to see if items can be removed
     public bool AbleToRemoveItem()
     {
-        foreach (GameObject item in items)
+        if(stack.Count > 0)
         {
-            if (item.activeSelf == true)
-            {
-                Debug.Log("Able to remove item");
-                return true;
-            }
+            return true;
         }
-        Debug.Log("NOT Able to remove item");
+
         return false;
     }
+
 }

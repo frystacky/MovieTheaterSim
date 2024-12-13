@@ -444,7 +444,7 @@ MonoBehaviour:
   sprintSpeed: 7
   sprintDuration: 5
   sprintCooldown: 0.5
-  sprintFOV: 80
+  sprintFOV: 60
   sprintFOVStepTime: 10
   useSprintBar: 0
   hideBarWhenFull: 0
