@@ -13,7 +13,6 @@ public class ObjectGrabbable : MonoBehaviour
     [SerializeField] private ItemObjectHandler thisItemObjectHandler; //link of the boxItems object
     LayerMask layerMask; //layer needed on the object that is able to take supplys
     private ItemObjectHandler hitItemObjectHandler; // will be set by raycast, the object able to be supplied
-    [SerializeField] private string itemType; //this is used ensure the suppling object puts the correct item in the item slot
 
     private void Awake()
     {

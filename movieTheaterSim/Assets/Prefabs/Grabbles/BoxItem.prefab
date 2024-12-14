@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 934691507680508572}
   - component: {fileID: 5980505403039303352}
   m_Layer: 0
-  m_Name: CandyCorn
+  m_Name: BoxItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

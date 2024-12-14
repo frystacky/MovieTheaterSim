@@ -7,22 +7,26 @@ using UnityEngine;
 
 public class ItemObjectHandler : MonoBehaviour
 {
+    [Header("Inventory slot where items will be moved. move Item Slot HERE")]
     [SerializeField] private List<GameObject> itemSlot = new List<GameObject> { }; //tracks frontend data
     [SerializeField] public Stack<GameObject> stack = new Stack<GameObject>();     //tracks backend data
-    [SerializeField] private int maxItemSize;
+    [Header("Inventory max size, set by child Item Slot# in list")]
+    [SerializeField] private int maxItemSize;   //max inventory size of box
+    [Header("Item Type In Inventory if Inv has items on load")]
+    [SerializeField] private string itemsInBox;    //the items that come in box
    
     private void Awake()
     {
         //set the size of the premade list to know how many objects were added
         maxItemSize = itemSlot.Count;
 
-        //add items to referance to it in the backend
-        foreach (var item in itemSlot)
+        //populates the stack if the object such as a box comes with items on start up
+        foreach (GameObject item in itemSlot)
         {
             //get item child and add it to stack
             if (item != null && item.gameObject.transform.childCount > 0)
             {
-                Debug.Log(item.transform.GetChild(0).gameObject);
+                item.gameObject.transform.GetComponentInChildren<ItemInfo>().setItemType(itemsInBox); //sets item type in items
                 stack.Push(item.transform.GetChild(0).gameObject);
             }
         }
@@ -34,22 +38,29 @@ public class ItemObjectHandler : MonoBehaviour
         int itemSize = stack.Count;
 
         //makes sure that we cannot add more items than the size of objects inventory
-        if (itemSize < maxItemSize) //TODO: check for type later
+        if (itemSize > 0)
         {
-
+            GameObject gameObject = stack.Peek();
+            //check if object trying to add is the same type as items in stack
+            if (gameObject.GetComponent<ItemInfo>().getItemType() == objectToAdd.GetComponent<ItemInfo>().getItemType())
+            {
+                objectToAdd.transform.parent = itemSlot[stack.Count].transform;   //add to the next empty element
+                stack.Push(objectToAdd);
+            }
+        }
+        else
+        {
             objectToAdd.transform.parent = itemSlot[stack.Count].transform;   //add to the next empty element
             stack.Push(objectToAdd);
-            Debug.Log("IN HERE2");
         }
-
     }
+
     public GameObject RemoveItem()
     {
         GameObject gameObject = stack.Peek();
         stack.Pop();
 
         return gameObject;
-
     }
 
     //helper function to see if items can be added
@@ -70,7 +81,6 @@ public class ItemObjectHandler : MonoBehaviour
         {
             return true;
         }
-
         return false;
     }
 
