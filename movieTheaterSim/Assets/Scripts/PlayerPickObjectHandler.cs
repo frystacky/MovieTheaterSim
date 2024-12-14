@@ -20,11 +20,9 @@ public class PlayerPickObjectHandler : MonoBehaviour
             {
                 if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
                 {
-                    //Debug.Log(raycastHit.transform);
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
                         objectGrabbable.Grab(objectGrabPointTransform);
-                        //Debug.Log(objectGrabbable);
                     }
                 }
             }
