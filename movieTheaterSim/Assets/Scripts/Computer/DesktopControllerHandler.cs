@@ -1,6 +1,8 @@
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DesktopControllerHandler : MonoBehaviour
@@ -11,9 +13,10 @@ public class DesktopControllerHandler : MonoBehaviour
     public float mouseSensitivity;
     public float maxXDistance = 0.5f;
     public float maxYDistance = 0.5f;
-    public bool isMoving = false;
 
-    public Quaternion orginalRot;
+    private bool isMoving = false;
+    //used to control the speed at which the camera turns at pc
+    [SerializeField] private float anglePerSecond = 25.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +29,6 @@ public class DesktopControllerHandler : MonoBehaviour
     {
         //float x = Mouse.current.position.ReadValue().x;
         //float y = Mouse.current.position.ReadValue().y;
-
         //transform.localPosition = new Vector3(-x * mouseSensitivity,-y * mouseSensitivity, y);
 
         Vector3 newPos = mouseCenter.position;
@@ -48,37 +50,22 @@ public class DesktopControllerHandler : MonoBehaviour
             
             Debug.Log("Turning off player Controller");
 
-            //if off turn it on
+
             if (player.GetComponent<FirstPersonController>().enabled == false)
             {
-                Debug.Log("in if .. " + player.GetComponent<FirstPersonController>().playerCanMove);
-               
-                player.GetComponent<FirstPersonController>().playerCamera.transform.localPosition = new Vector3(0, 0, 0);
-
-                Debug.Log("pc view pos local rot is " + PCViewPos.localRotation);
-                Debug.Log("pc view pos glob rot is " + PCViewPos.rotation);
-
-                Debug.Log("players local rots is " + player.GetComponent<FirstPersonController>().playerCamera.transform.localRotation);
-                player.GetComponent<FirstPersonController>().playerCamera.transform.localRotation = orginalRot;
-                Debug.Log("players local rots after set is " + player.GetComponent<FirstPersonController>().playerCamera.transform.localRotation);
-                player.GetComponent<FirstPersonController>().enabled = true;
+                //stops the update of moving to target
                 isMoving = false;
+                //resets the local pos of camera back to player, since orginal is 0.0.0 under first person controller
+                player.GetComponent<FirstPersonController>().playerCamera.transform.localPosition = new Vector3(0, 0, 0);
+                //allows the first person controller to move again
+                player.GetComponent<FirstPersonController>().enabled = true;
             }
             else
             {
+                //turns off movement for first person controller character
                 player.GetComponent<FirstPersonController>().enabled = false;
-                Debug.Log("pc postion " + PCViewPos.transform.position);
-                Debug.Log("orginalRot before set is " + orginalRot);
-                orginalRot = player.GetComponent<FirstPersonController>().playerCamera.transform.localRotation;
-                Debug.Log("players rot after set is " + player.GetComponent<FirstPersonController>().playerCamera.transform.localRotation);
-
-                player.GetComponent<FirstPersonController>().transform.localRotation = PCViewPos.transform.rotation;
-
+                //turns on movement of player camera to target pos
                 isMoving = true;
-
-                //dont ever set global and reset local.
-                //when reseting rotation try and reset cameras global to players global
-                // or componet reset?
             }
 
 
@@ -86,9 +73,23 @@ public class DesktopControllerHandler : MonoBehaviour
 
         if(isMoving && player != null)
         {
+            //moves to target location smoothly over time
             player.GetComponent<FirstPersonController>().playerCamera.transform.position = Vector3.MoveTowards(player.GetComponent<FirstPersonController>().playerCamera.transform.position, PCViewPos.transform.position, 3f * Time.deltaTime);
+
+            //Rotates to target location smoothly over time
+            player.GetComponent<FirstPersonController>().playerCamera.transform.rotation = Quaternion.RotateTowards(player.GetComponent<FirstPersonController>().playerCamera.transform.rotation, PCViewPos.transform.rotation, anglePerSecond * Time.deltaTime);
+            
+            //quickly moves and rotates to the target pos
+            //player.GetComponent<FirstPersonController>().playerCamera.transform.SetPositionAndRotation(PCViewPos.transform.position, PCViewPos.transform.rotation);
         }
-        
+
+        //TODO
+        //when interaction mode, mouse movement will move computer mouse movement
+        //Clamp mouse to computer screen
+        //have mouse able to interact with stuff on computer screen
+        //create some computer logic, maybe buy items?
+        //add more protoype UI to computer, time? money? etc..
+        //have logic to be able to interact with computer, it will get player info and etc so it can tell who is player 1 and 2
 
     }
 }
