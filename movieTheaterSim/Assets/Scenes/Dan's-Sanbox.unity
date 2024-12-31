@@ -2830,12 +2830,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCenter: {fileID: 571549706}
+  mouseCenterRect: {fileID: 571549706}
   PCViewPos: {fileID: 1506620626}
   player: {fileID: 4459864850375088538}
   mouseSensitivity: 0
   maxXDistance: 0.5
   maxYDistance: 0.5
   anglePerSecond: 25
+  hoverCursor: {fileID: 2800000, guid: be48406677b5a4848b40c50da2ed6f96, type: 3}
+  rb: {fileID: 571549708}
+  tf: {fileID: 571549706}
 --- !u!43 &951851957
 Mesh:
   m_ObjectHideFlags: 0
