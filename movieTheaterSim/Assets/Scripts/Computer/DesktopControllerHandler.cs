@@ -7,22 +7,14 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DesktopControllerHandler : MonoBehaviour
 {
-    public Transform mouseCenter;
-    public RectTransform mouseCenterRect;
-    public Transform PCViewPos;
-    public GameObject player;
-    public float mouseSensitivity;
-    public float maxXDistance = 0.5f;
-    public float maxYDistance = 0.5f;
-
+    [SerializeField] private Transform PCViewPos; //position of point where player gets moved to
+    public GameObject player;  //TODO get dynamically later
     private bool isMoving = false;
-    //used to control the speed at which the camera turns at pc
-    [SerializeField] private float anglePerSecond = 25.0f;
+    [SerializeField] private float anglePerSecond = 25.0f; //used to control the speed at which the camera turns at pc
+    public Texture2D hoverCursor; //mouse cursor icon that gets switch when viewing pc
 
-    public Texture2D hoverCursor;
-
-    public Rigidbody rb;
-    public Transform tf;
+    [Header("Button Gameobject to fetch by name")]
+    [SerializeField] private GameObject pcIcons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,9 +25,6 @@ public class DesktopControllerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float x = Mouse.current.position.ReadValue().x;
-        //float y = Mouse.current.position.ReadValue().y;
-        //transform.localPosition = new Vector3(-x * mouseSensitivity,-y * mouseSensitivity, y);
 
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -67,8 +56,7 @@ public class DesktopControllerHandler : MonoBehaviour
             {
                 //turns off movement for first person controller character
                 player.GetComponent<FirstPersonController>().enabled = false;
-                //turns on movement of player camera to target pos
-                
+                //turns on movement of player camera to target pos              
                 isMoving = true;
             }
 
@@ -90,4 +78,10 @@ public class DesktopControllerHandler : MonoBehaviour
         }
 
     }
+
+    public void ClickOnIcon()
+    {
+        pcIcons.SetActive(false);
+    }
+
 }
