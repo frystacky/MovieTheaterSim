@@ -12,10 +12,12 @@ public class PCWorldSpaceUiHandler : MonoBehaviour
     [SerializeField] PointerEventData m_PointerEventData;
     [SerializeField] EventSystem m_EventSystem;
     [SerializeField] DesktopControllerHandler desktopControllerHandler;
-    [Header("Button Gameobject to fetch by name")]
+    
+    [Header("Button Gameobject to fetch by name for world space UI interaction")]
     [SerializeField] private GameObject saleButtonName;
     [SerializeField] private GameObject bankButtonName;
     [SerializeField] private GameObject test3ButtonName;
+
 
     void Start()
     {
@@ -48,11 +50,10 @@ public class PCWorldSpaceUiHandler : MonoBehaviour
             {
                 Debug.Log("Hit " + result.gameObject.name);
 
-                if(result.gameObject.name == saleButtonName.name)
-                {
-                    desktopControllerHandler.ClickOnIcon();
-                }
-
+                //if(result.gameObject.name == saleButtonName.name)
+                //{
+                //    saleButtonName.GetComponent<Button>().onClick.Invoke();            
+                //}
             }
         }
     }

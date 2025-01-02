@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,15 +12,21 @@ public class DesktopControllerHandler : MonoBehaviour
     public GameObject player;  //TODO get dynamically later
     private bool isMoving = false;
     [SerializeField] private float anglePerSecond = 25.0f; //used to control the speed at which the camera turns at pc
-    public Texture2D hoverCursor; //mouse cursor icon that gets switch when viewing pc
+    [SerializeField] public Texture2D hoverCursor; //mouse cursor icon that gets switch when viewing pc
+    [SerializeField] private TextMeshProUGUI clockText;
 
     [Header("Button Gameobject to fetch by name")]
     [SerializeField] private GameObject pcIcons;
 
+    [Header("App Objects")]
+    [SerializeField] private GameObject wholeSaleApp;
+    [SerializeField] private GameObject bankApp;
+    [SerializeField] private GameObject testApp3;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //UnityEngine.Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.Auto);
     }
 
     // Update is called once per frame
@@ -77,11 +84,47 @@ public class DesktopControllerHandler : MonoBehaviour
             }
         }
 
+        //change this later to actual game time
+        clockText.text = System.DateTime.Now.ToString("h:mm tt");
+
     }
 
-    public void ClickOnIcon()
+    private void ClickOnIcon()
     {
         pcIcons.SetActive(false);
     }
 
+    public void WholeSaleAppIconOnClick()
+    {
+        ClickOnIcon();
+        wholeSaleApp.SetActive(true);
+    }
+    public void BankAppIconOnClick()
+    {
+        ClickOnIcon();
+        bankApp.SetActive(true);
+    }
+    public void TestApp3OnClick()
+    {
+        ClickOnIcon();
+        testApp3.SetActive(true);
+    }
+
+    public void AppsXButtonOnClick()
+    {
+        if(wholeSaleApp.activeSelf)
+        {
+            wholeSaleApp.SetActive(false);
+        }
+        else if(bankApp.activeSelf) 
+        {
+            bankApp.SetActive(false);
+        }
+        else if (testApp3.activeSelf)
+        {  
+            testApp3.SetActive(false);
+        }
+
+        pcIcons.SetActive(true);
+    }
 }
