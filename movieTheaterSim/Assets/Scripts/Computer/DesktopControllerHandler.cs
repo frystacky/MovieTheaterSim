@@ -9,13 +9,13 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DesktopControllerHandler : MonoBehaviour
 {
-    [SerializeField] private Transform PCViewPos; //position of point where player gets moved to
-    [SerializeField] private GameObject player; //the interacting player object
+    [SerializeField] private Transform PCViewPos; //position of point where player gets moved to   
     [SerializeField] private Texture2D hoverCursor; //mouse cursor icon that gets switch when viewing pc
     [SerializeField] private TextMeshProUGUI clockText; //clock text in taskbar - TODO: set to gameTime player
     [SerializeField] private float anglePerSecond = 25.0f; //used to control the speed at which the camera turns at pc
     [SerializeField] private float camMoveSpeed = 3f; //rate at which the cam moves to the object
 
+    private GameObject player; //the interacting player object
     private bool isMoving = false;
 
     [Header("Button Gameobject to fetch by name")]
