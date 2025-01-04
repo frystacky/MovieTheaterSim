@@ -16,7 +16,7 @@ public class DesktopControllerHandler : MonoBehaviour
     [SerializeField] private float camMoveSpeed = 3f; //rate at which the cam moves to the object
 
     private GameObject player; //the interacting player object
-    private bool isMoving = false;
+    private bool isCameraMoving = false;
 
     [Header("Button Gameobject to fetch by name")]
     [SerializeField] private GameObject pcIcons;
@@ -36,7 +36,7 @@ public class DesktopControllerHandler : MonoBehaviour
             if (player.GetComponent<FirstPersonController>().enabled == false)
             {
                 //stops the update of moving to target
-                isMoving = false;
+                isCameraMoving = false;
                 //resets the local pos of camera back to player, since orginal is 0.0.0 under first person controller
                 player.GetComponent<FirstPersonController>().playerCamera.transform.localPosition = new Vector3(0, 0, 0);
 
@@ -48,14 +48,13 @@ public class DesktopControllerHandler : MonoBehaviour
             else
             {
                 //turns off movement for first person controller character
-                player.GetComponent<FirstPersonController>().crosshairImage = null;
                 player.GetComponent<FirstPersonController>().enabled = false;
                 //turns on movement of player camera to target pos              
-                isMoving = true;
+                isCameraMoving = true;
             }
         }
 
-        if (isMoving && player != null)
+        if (isCameraMoving && player != null)
         {
             //moves to target location smoothly over time
             player.GetComponent<FirstPersonController>().playerCamera.transform.position = Vector3.MoveTowards(player.GetComponent<FirstPersonController>().playerCamera.transform.position, PCViewPos.transform.position, camMoveSpeed * Time.deltaTime);
