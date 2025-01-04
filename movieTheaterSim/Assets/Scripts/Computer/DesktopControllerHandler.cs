@@ -48,6 +48,7 @@ public class DesktopControllerHandler : MonoBehaviour
             else
             {
                 //turns off movement for first person controller character
+                player.GetComponent<FirstPersonController>().crosshairImage = null;
                 player.GetComponent<FirstPersonController>().enabled = false;
                 //turns on movement of player camera to target pos              
                 isMoving = true;

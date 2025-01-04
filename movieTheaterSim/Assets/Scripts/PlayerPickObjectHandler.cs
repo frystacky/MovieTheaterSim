@@ -23,7 +23,6 @@ public class PlayerPickObjectHandler : MonoBehaviour
         //pick up object with objectGrabbable script attached, key is mapped in input manager
         if (Input.GetButtonDown("PickUp"))
         {
-            Debug.Log("e was pressed and " + objectGrabbable);
             //not carrying object, try to grab one
             if (objectGrabbable == null)
             {
@@ -31,14 +30,14 @@ public class PlayerPickObjectHandler : MonoBehaviour
                 {
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
-                        objectGrabbable.Grab(objectGrabPointTransform);
+                        objectGrabbable.Grab(objectGrabPointTransform, this.gameObject);
                     }
                 }
             }
             else
             {
                 //carrying a grabbed object, drop it
-                objectGrabbable.Drop();
+                objectGrabbable.Drop(this.gameObject);
                 objectGrabbable = null;
             }
             
@@ -46,7 +45,7 @@ public class PlayerPickObjectHandler : MonoBehaviour
         //throw carring object, key is mapped in input manager
         if (Input.GetButtonDown("Throw") && objectGrabbable != null)
         {
-            objectGrabbable.ThrowObject();
+            objectGrabbable.ThrowObject(this.gameObject);
             objectGrabbable = null;
         }
     }
