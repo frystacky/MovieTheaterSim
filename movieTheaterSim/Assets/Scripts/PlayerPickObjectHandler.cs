@@ -10,11 +10,20 @@ public class PlayerPickObjectHandler : MonoBehaviour
 
     private ObjectGrabbable objectGrabbable;
 
+    private void Start()
+    {
+        //Find the child named "PlayerCamera" of the gameobject "Joint" (Joint is a child of "FirstPersonController").
+        playerCameraTransform = this.transform.Find("Joint/PlayerCamera");
+        //Find the child named "ObjectGrabPoint" of the gameobject "PlayerCamera" (PlayerCamera is a child of "Joint")
+        objectGrabPointTransform =  this.transform.Find("Joint/PlayerCamera/ObjectGrabPoint");
+    }
+
     private void Update()
     {
         //pick up object with objectGrabbable script attached, key is mapped in input manager
         if (Input.GetButtonDown("PickUp"))
         {
+            Debug.Log("e was pressed and " + objectGrabbable);
             //not carrying object, try to grab one
             if (objectGrabbable == null)
             {
