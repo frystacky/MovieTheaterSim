@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObjectGrabbable : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    private GameObject player;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
     [SerializeField] private float throwForce = 500f; //force at which the object is thrown at
@@ -10,7 +10,7 @@ public class ObjectGrabbable : MonoBehaviour
     [Header("Supply object configurations")]
     [SerializeField] private bool isSupplies; //Set trun if grabbed object is able to supple items
     [SerializeField] private float supplyDistance = 1f; //The distance the grabbed object needs to to to supply items
-    [SerializeField] private ItemObjectHandler thisItemObjectHandler; //link of the boxItems object
+    private ItemObjectHandler thisItemObjectHandler; //link of the boxItems object child component
     LayerMask layerMask; //layer needed on the object that is able to take supplys
     private ItemObjectHandler hitItemObjectHandler; // will be set by raycast, the object able to be supplied
 
@@ -19,25 +19,33 @@ public class ObjectGrabbable : MonoBehaviour
         objectRigidbody = GetComponent<Rigidbody>();
         layerMask = LayerMask.GetMask("Suppliable");
     }
-    public void Grab(Transform objectGrabPointTransform)
+
+    private void Start()
+    {
+        this.thisItemObjectHandler = GetComponentInChildren<ItemObjectHandler>();
+    }
+    public void Grab(Transform objectGrabPointTransform, GameObject player)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
+        this.player = player;
         objectRigidbody.useGravity = false;
         objectRigidbody.transform.parent = objectGrabPointTransform; //add the picked up object as a child to ObjectGrabPoint
         Physics.IgnoreCollision(objectRigidbody.GetComponent<Collider>(), player.GetComponent<Collider>(), true); //turn off collistion with player
         transform.rotation = Quaternion.identity;
+        this.player = null;
     }
 
-    public void Drop()
+    public void Drop(GameObject player)
     {
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.transform.parent = null;
         Physics.IgnoreCollision(objectRigidbody.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         transform.rotation = Quaternion.Euler(0f, 0f, 0f); //trys and make sure the object drops straight down
+        this.player = null;
     }
 
-    public void ThrowObject()
+    public void ThrowObject(GameObject player)
     {
         //same as drop function, but adds force to object before undefining it
         this.objectGrabPointTransform = null;
@@ -46,6 +54,7 @@ public class ObjectGrabbable : MonoBehaviour
         Physics.IgnoreCollision(objectRigidbody.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         objectRigidbody.AddForce(transform.forward * throwForce);
         transform.rotation = Quaternion.Euler(0f, 0f, 0f); //trys and make sure the object drops straight down
+        this.player = null;
     }
 
     private void FixedUpdate()
