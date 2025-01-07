@@ -34,14 +34,14 @@ public class DesktopControllerHandler : MonoBehaviour
                 //resets the local pos of camera back to player, since orginal is 0.0.0 under first person controller
                 player.GetComponent<FirstPersonController>().playerCamera.transform.localPosition = new Vector3(0, 0, 0);
 
-                //TODO: figure out how to get playerx cursor only
-                UnityEngine.Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 //allows the first person controller to move again
+                Cursor.lockState = CursorLockMode.Locked;
                 player.GetComponent<FirstPersonController>().enabled = true;
             }
             else
             {
                 //turns off movement for first person controller character
+                Cursor.lockState = CursorLockMode.Confined;
                 player.GetComponent<FirstPersonController>().enabled = false;
                 //turns on movement of player camera to target pos              
                 isCameraMoving = true;
@@ -56,10 +56,6 @@ public class DesktopControllerHandler : MonoBehaviour
             //Rotates to target location smoothly over time
             player.GetComponent<FirstPersonController>().playerCamera.transform.rotation = Quaternion.RotateTowards(player.GetComponent<FirstPersonController>().playerCamera.transform.rotation, PCViewPos.transform.rotation, anglePerSecond * Time.deltaTime);
 
-            if(player.GetComponent<FirstPersonController>().playerCamera.transform.position == PCViewPos.transform.position)
-            {
-                UnityEngine.Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.Auto);
-            }
         }
 
         //change this later to actual game time

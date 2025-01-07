@@ -21,7 +21,7 @@ public class PlayerPickObjectHandler : MonoBehaviour
     private void Update()
     {
         //pick up object with objectGrabbable script attached, key is mapped in input manager
-        if (Input.GetButtonDown("PickUp"))
+        if (Input.GetButtonDown("Interaction"))
         {
             //not carrying object, try to grab one
             if (objectGrabbable == null)
