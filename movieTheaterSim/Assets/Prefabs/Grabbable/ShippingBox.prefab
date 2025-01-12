@@ -511,9 +511,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &4607274867331204268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c02c2dfdadfd445ab46975789f44e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectGrabPointTransform: {fileID: 0}
   supplyDistance: 1
 --- !u!1 &2151902779980761425
 GameObject:
