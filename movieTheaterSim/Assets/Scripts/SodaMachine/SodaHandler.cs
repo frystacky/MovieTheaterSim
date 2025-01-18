@@ -5,7 +5,7 @@ public class SodaHandler : MonoBehaviour
     private Transform objectGrabPointTransform;
     private ObjectGrabbable objectGrabbable;
 
-    [Header("Supply object configurations")]
+    [Header("Soda object configurations")]
     [SerializeField] private float sodaPlaceDistance = 3f; //The distance the grabbed object needs to to to supply items
     LayerMask layerMask; //layer needed on the object that is able to take supplys
     private Transform hitItemObjectHandler; // will be set by raycast, the object able to be supplied
@@ -36,6 +36,7 @@ public class SodaHandler : MonoBehaviour
                         Debug.Log(hitItemObjectHandler.gameObject.name + " HIT2");
                         objectGrabbable.Drop(this.gameObject);
                         this.transform.position = hitItemObjectHandler.transform.position;
+                        transform.localRotation = Quaternion.identity;  //resets rotations on pick up to center object
                     }
                 }
                 else
