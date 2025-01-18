@@ -449,41 +449,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &72513603
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 72513604}
-  m_Layer: 0
-  m_Name: SodaSlot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &72513604
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72513603}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.380908, y: 2.0647993, z: 17.795876}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1563023925}
-  - {fileID: 1568927013}
-  - {fileID: 348930469}
-  - {fileID: 456672090}
-  m_Father: {fileID: 1503340087}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &80306996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,9 +1714,10 @@ GameObject:
   m_Component:
   - component: {fileID: 348930469}
   - component: {fileID: 348930470}
+  - component: {fileID: 348930471}
   m_Layer: 9
   m_Name: Slot3
-  m_TagString: Untagged
+  m_TagString: SodaSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1764,12 +1730,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348930468}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.000057, y: -42.39998, z: -15.100098}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 15.000057, y: -42.39998, z: 15.100098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 72513604}
+  m_Children:
+  - {fileID: 5934923910307879380}
+  m_Father: {fileID: 3258282930253331290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &348930470
 BoxCollider:
@@ -1792,6 +1759,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 20, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &348930471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348930468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaName: Another Lemonade
+  sodaFuleLevel: 100
 --- !u!1 &354695289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,9 +2762,10 @@ GameObject:
   m_Component:
   - component: {fileID: 456672090}
   - component: {fileID: 456672091}
+  - component: {fileID: 456672092}
   m_Layer: 9
   m_Name: Slot4
-  m_TagString: Untagged
+  m_TagString: SodaSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2796,12 +2778,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456672089}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.5, y: -42.39998, z: -15.100098}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 37.5, y: -42.39998, z: 15.100098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 72513604}
+  m_Children:
+  - {fileID: 483963209}
+  m_Father: {fileID: 3258282930253331290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &456672091
 BoxCollider:
@@ -2824,6 +2807,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 29, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &456672092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456672089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaName: Dr Salt
+  sodaFuleLevel: 100
 --- !u!1 &483963208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,7 +2834,7 @@ GameObject:
   - component: {fileID: 483963211}
   - component: {fileID: 483963210}
   m_Layer: 0
-  m_Name: Soda4
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2850,17 +2847,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483963208}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 15.100098}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1528922191}
-  m_Father: {fileID: 3258282930253331290}
+  m_Father: {fileID: 456672090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34, y: 0}
+  m_AnchoredPosition: {x: 3.4999695, y: 42.39998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &483963210
@@ -2886,7 +2883,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8784314, g: 0.79607844, b: 0.15294118, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.08235294, g: 0.9254902, b: 0.06666667, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -6496,7 +6493,6 @@ Transform:
   m_Children:
   - {fileID: 1184034286}
   - {fileID: 1790770864}
-  - {fileID: 72513604}
   - {fileID: 5010011808742134765}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6711,9 +6707,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1563023925}
   - component: {fileID: 1563023926}
+  - component: {fileID: 1563023927}
   m_Layer: 9
   m_Name: Slot1
-  m_TagString: Untagged
+  m_TagString: SodaSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6726,12 +6723,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563023924}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.5, y: -42.39998, z: -15.100098}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -37.5, y: -42.39998, z: 15.100098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 72513604}
+  m_Children:
+  - {fileID: 8162488982905804775}
+  m_Father: {fileID: 3258282930253331290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1563023926
 BoxCollider:
@@ -6754,6 +6752,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 20, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1563023927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563023924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaName: Cola
+  sodaFuleLevel: 100
 --- !u!1 &1568927012
 GameObject:
   m_ObjectHideFlags: 0
@@ -6764,9 +6776,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1568927013}
   - component: {fileID: 1568927014}
+  - component: {fileID: 1568927015}
   m_Layer: 9
   m_Name: Slot2
-  m_TagString: Untagged
+  m_TagString: SodaSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6779,12 +6792,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568927012}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.000057, y: -42.39998, z: -15.100098}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -15.000057, y: -42.39998, z: 15.100098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 72513604}
+  m_Children:
+  - {fileID: 2672561837690196304}
+  m_Father: {fileID: 3258282930253331290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1568927014
 BoxCollider:
@@ -6807,6 +6821,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 20, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1568927015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568927012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaName: 7 Down
+  sodaFuleLevel: 100
 --- !u!43 &1668813326
 Mesh:
   m_ObjectHideFlags: 0
@@ -8748,7 +8776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3258282930253331290}
   m_Layer: 0
-  m_Name: DesktopIcons
+  m_Name: SodaMachineButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9105,17 +9133,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4709090153476345415}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 15.100098}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9179047903453992246}
-  m_Father: {fileID: 3258282930253331290}
+  m_Father: {fileID: 1568927013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16, y: 0}
+  m_AnchoredPosition: {x: 0.99991226, y: 42.39998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2699981616139652770
@@ -9160,10 +9188,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8162488982905804775}
-  - {fileID: 2672561837690196304}
-  - {fileID: 5934923910307879380}
-  - {fileID: 483963209}
+  - {fileID: 1563023925}
+  - {fileID: 1568927013}
+  - {fileID: 348930469}
+  - {fileID: 456672090}
   m_Father: {fileID: 5010011808742134765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9289,7 +9317,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8784314, g: 0.79607844, b: 0.15294118, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.08235294, g: 0.9254902, b: 0.06666667, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -9441,7 +9469,7 @@ GameObject:
   - component: {fileID: 8234926218364533134}
   - component: {fileID: 5890398075524866393}
   m_Layer: 0
-  m_Name: Soda2
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9972,7 +10000,7 @@ GameObject:
   - component: {fileID: 4000681555987955856}
   - component: {fileID: 7461608711571629671}
   m_Layer: 0
-  m_Name: Soda1
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10031,7 +10059,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8784314, g: 0.79607844, b: 0.15294118, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.08235294, g: 0.9254902, b: 0.06666667, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -10059,17 +10087,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7311029336035877413}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 15.100098}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4219404728946369951}
-  m_Father: {fileID: 3258282930253331290}
+  m_Father: {fileID: 348930469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: 0}
+  m_AnchoredPosition: {x: 0.000038146973, y: 42.39998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6041889897764514901
@@ -10362,7 +10390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9bc5ad5d1c9d84482d2f44a9b29619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sodaSlot: []
+  sodaSlotsList: []
+  sodaSlots: {fileID: 0}
+  sodaTag: SodaSlot
 --- !u!65 &6897678802966208697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10434,7 +10464,7 @@ GameObject:
   - component: {fileID: 5878547506224650965}
   - component: {fileID: 3827457217792910553}
   m_Layer: 0
-  m_Name: Soda3
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10463,7 +10493,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8773585, g: 0.7944349, b: 0.15312389, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.08172708, g: 0.9245283, b: 0.06541473, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -10622,17 +10652,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5855592342329022332}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 15.100098}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8600944213096517286}
-  m_Father: {fileID: 3258282930253331290}
+  m_Father: {fileID: 1563023925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36, y: 0}
+  m_AnchoredPosition: {x: -1.5000687, y: 42.39998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &8176344791317116728
