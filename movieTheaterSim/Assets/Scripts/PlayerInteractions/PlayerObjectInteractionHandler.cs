@@ -71,9 +71,9 @@ public class PlayerObjectInteractionHandler : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //makes sure the interacting object is a player and only 1 can interact with the object at a time
         if (other.gameObject.CompareTag("Player") && !isInteractionLocked)
         {
-            Debug.Log("LEAVING");
             canInteract = false;
             player = null;
         }
@@ -85,7 +85,6 @@ public class PlayerObjectInteractionHandler : MonoBehaviour
         {
             if (!other.GetComponent<PlayerPickObjectHandler>().isHoldingObject && !isInteractionLocked)
             {
-                Debug.Log("IN USE");
                 canInteract = true;
                 player = other.gameObject;
             }

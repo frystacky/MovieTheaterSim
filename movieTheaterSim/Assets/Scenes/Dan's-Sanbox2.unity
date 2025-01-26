@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 80307005}
   - component: {fileID: 80307006}
   m_Layer: 0
-  m_Name: SodaBottle
+  m_Name: SodaBottle(S)
   m_TagString: SodaBottle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sodaFillLevel: 0
   sodaTypeName: 
-  sodaSizeMaxFillLevel: 0
+  sodaSizeMaxFillLevel: 50
   sodaPlaceDistance: 2
   layerMask:
     serializedVersion: 2
