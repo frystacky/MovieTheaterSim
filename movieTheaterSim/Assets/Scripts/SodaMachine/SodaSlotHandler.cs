@@ -72,12 +72,6 @@ public class SodaSlotHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         }
     }
 
-    public void SodaMachineSlotButtonPush()
-    {
-        Debug.Log("PUSHING BUTTON!");
-                                    
-    }
-
     //this function checks if the mouse is pressured on the button
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -88,7 +82,5 @@ public class SodaSlotHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         buttonPressed = false;
     }
-
-    
-
+ 
 }
