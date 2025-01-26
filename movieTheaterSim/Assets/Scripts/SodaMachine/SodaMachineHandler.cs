@@ -11,6 +11,7 @@ public class SodaMachineHandler : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //finds soda slots gameObject and adds them to a list
         sodaSlots = this.transform.Find("SodaMachineButtons");
         foreach (Transform sodaSlot in sodaSlots.transform.GetComponentsInChildren<Transform>())
         {
@@ -19,32 +20,11 @@ public class SodaMachineHandler : MonoBehaviour
                 sodaSlotsList.Add(sodaSlot.gameObject);
             }
         }
+        //Sets name on soda button from soda type
         foreach (GameObject slot in sodaSlotsList)
         {
             //grabs the name from SodaSlotHandler componet on the slot gameObject and sets the text of the button
-            slot.transform.Find("Button/ButtonText").GetComponent<TextMeshProUGUI>().SetText(slot.GetComponent<SodaSlotHandler>().sodaName);
+            slot.transform.Find("Button/ButtonText").GetComponent<TextMeshProUGUI>().SetText(slot.transform.Find("Button").GetComponent<SodaSlotHandler>().sodaTypeName);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    //TODO:
-    // SET script on sodaslot now and get the name
-
-
-
-
-    //TODO
-    //buttons fill soda on/off
-    //soda has fuel
-    //soda machine has a slot for bottle
-
-    //soda bottle is a grabbable
-    //soda has a fill level
-    
-
 }

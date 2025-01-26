@@ -8,6 +8,8 @@ public class PlayerPickObjectHandler : MonoBehaviour
     [SerializeField] private Transform objectGrabPointTransform;
     [SerializeField] private float pickUpDistance = 2f;
 
+    [SerializeField] public bool isHoldingObject = false;
+
     private ObjectGrabbable objectGrabbable;
 
     private void Start()
@@ -21,7 +23,7 @@ public class PlayerPickObjectHandler : MonoBehaviour
     private void Update()
     {
         //pick up object with objectGrabbable script attached, key is mapped in input manager
-        if (Input.GetButtonDown("Interaction"))
+        if (Input.GetButtonDown("PickUp"))
         {
             //not carrying object, try to grab one
             if (objectGrabbable == null)
@@ -30,7 +32,8 @@ public class PlayerPickObjectHandler : MonoBehaviour
                 {
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
-                        objectGrabbable.Grab(objectGrabPointTransform, this.gameObject);
+                        isHoldingObject = true;
+                        objectGrabbable.Grab(objectGrabPointTransform, this.gameObject);                      
                     }
                 }
             }
@@ -39,6 +42,7 @@ public class PlayerPickObjectHandler : MonoBehaviour
                 //carrying a grabbed object, drop it
                 objectGrabbable.Drop(this.gameObject);
                 objectGrabbable = null;
+                isHoldingObject = false;
             }
             
         }
@@ -47,6 +51,7 @@ public class PlayerPickObjectHandler : MonoBehaviour
         {
             objectGrabbable.ThrowObject(this.gameObject);
             objectGrabbable = null;
+            isHoldingObject = false;
         }
     }
 }

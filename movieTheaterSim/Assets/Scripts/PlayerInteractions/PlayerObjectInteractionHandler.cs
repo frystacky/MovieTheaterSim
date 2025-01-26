@@ -11,6 +11,7 @@ public class PlayerObjectInteractionHandler : MonoBehaviour
     private bool isCameraMoving = false;
 
     private bool canInteract = false;
+    private bool isInteractionLocked = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -25,6 +26,7 @@ public class PlayerObjectInteractionHandler : MonoBehaviour
         {
             if (player.GetComponent<FirstPersonController>().enabled == false)
             {
+                isInteractionLocked = false; //unlock the interaction so that we can only get one players info at a time
                 //stops the update of moving to target
                 isCameraMoving = false;
                 //resets the local pos of camera back to player, since orginal is 0.0.0 under first person controller
@@ -36,6 +38,7 @@ public class PlayerObjectInteractionHandler : MonoBehaviour
             }
             else
             {
+                isInteractionLocked = true; //locks the interaction so that we can only get one players info at a time
                 //turns off movement for first person controller character
                 Cursor.lockState = CursorLockMode.Confined;
                 player.GetComponent<FirstPersonController>().enabled = false;
@@ -58,17 +61,35 @@ public class PlayerObjectInteractionHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            canInteract = true;
-            player = other.gameObject;
+            if(!other.GetComponent<PlayerPickObjectHandler>().isHoldingObject && !isInteractionLocked) 
+            {
+                canInteract = true;
+                player = other.gameObject;
+            }         
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isInteractionLocked)
         {
+            Debug.Log("LEAVING");
             canInteract = false;
             player = null;
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (!other.GetComponent<PlayerPickObjectHandler>().isHoldingObject && !isInteractionLocked)
+            {
+                Debug.Log("IN USE");
+                canInteract = true;
+                player = other.gameObject;
+            }
+        }
+
     }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - SodaSlot
+  - SodaBottle
   layers:
   - Default
   - TransparentFX

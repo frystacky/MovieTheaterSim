@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 80307006}
   m_Layer: 0
   m_Name: SodaBottle
-  m_TagString: Untagged
+  m_TagString: SodaBottle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -856,7 +856,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c650d11dfd7679447a61be7b186de420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sodaPlaceDistance: 1
+  sodaFillLevel: 0
+  sodaTypeName: 
+  sodaSizeMaxFillLevel: 0
+  sodaPlaceDistance: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!43 &128609057
 Mesh:
   m_ObjectHideFlags: 0
@@ -1714,8 +1720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 348930469}
   - component: {fileID: 348930470}
-  - component: {fileID: 348930471}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Slot3
   m_TagString: SodaSlot
   m_Icon: {fileID: 0}
@@ -1755,24 +1760,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 20, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &348930471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348930468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sodaName: Another Lemonade
-  sodaFuleLevel: 100
 --- !u!1 &354695289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,8 +2753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456672090}
   - component: {fileID: 456672091}
-  - component: {fileID: 456672092}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Slot4
   m_TagString: SodaSlot
   m_Icon: {fileID: 0}
@@ -2803,24 +2793,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 29, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &456672092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456672089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sodaName: Dr Salt
-  sodaFuleLevel: 100
 --- !u!1 &483963208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,7 +2809,9 @@ GameObject:
   - component: {fileID: 483963212}
   - component: {fileID: 483963211}
   - component: {fileID: 483963210}
-  m_Layer: 0
+  - component: {fileID: 483963213}
+  - component: {fileID: 483963214}
+  m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2942,6 +2920,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483963208}
   m_CullTransparentMesh: 1
+--- !u!114 &483963213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483963208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaTypeName: Cola
+  sodaSlotFuleLevel: 1000
+  sodaBottle: {fileID: 0}
+  sodaFillPerCall: 0.25
+  buttonPressed: 0
+--- !u!65 &483963214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483963208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 200, y: 400, z: 100}
+  m_Center: {x: 10, y: -425, z: 150}
 --- !u!1 &501866061
 GameObject:
   m_ObjectHideFlags: 0
@@ -6707,8 +6723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1563023925}
   - component: {fileID: 1563023926}
-  - component: {fileID: 1563023927}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Slot1
   m_TagString: SodaSlot
   m_Icon: {fileID: 0}
@@ -6748,24 +6763,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 20, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1563023927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563023924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sodaName: Cola
-  sodaFuleLevel: 100
 --- !u!1 &1568927012
 GameObject:
   m_ObjectHideFlags: 0
@@ -6776,8 +6777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1568927013}
   - component: {fileID: 1568927014}
-  - component: {fileID: 1568927015}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Slot2
   m_TagString: SodaSlot
   m_Icon: {fileID: 0}
@@ -6817,24 +6817,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 20, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1568927015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568927012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sodaName: 7 Down
-  sodaFuleLevel: 100
 --- !u!43 &1668813326
 Mesh:
   m_ObjectHideFlags: 0
@@ -9273,6 +9259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirstPersonController+Model
       objectReference: {fileID: 0}
+    - target: {fileID: 7904570252344056905, guid: 81426818c40644d49b1078baa31fcbc7, type: 3}
+      propertyPath: pickUpLayerMask.m_Bits
+      value: 1079
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9468,7 +9458,9 @@ GameObject:
   - component: {fileID: 2699981616139652770}
   - component: {fileID: 8234926218364533134}
   - component: {fileID: 5890398075524866393}
-  m_Layer: 0
+  - component: {fileID: 8234926218364533135}
+  - component: {fileID: 8234926218364533136}
+  m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9999,7 +9991,9 @@ GameObject:
   - component: {fileID: 1640681856179107362}
   - component: {fileID: 4000681555987955856}
   - component: {fileID: 7461608711571629671}
-  m_Layer: 0
+  - component: {fileID: 8162488982905804776}
+  - component: {fileID: 8162488982905804777}
+  m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10463,13 +10457,53 @@ GameObject:
   - component: {fileID: 3714995925488291655}
   - component: {fileID: 5878547506224650965}
   - component: {fileID: 3827457217792910553}
-  m_Layer: 0
+  - component: {fileID: 7311029336035877414}
+  - component: {fileID: 7311029336035877415}
+  m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7311029336035877414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7311029336035877413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaTypeName: Another Lemonade
+  sodaSlotFuleLevel: 1000
+  sodaBottle: {fileID: 0}
+  sodaFillPerCall: 0.25
+  buttonPressed: 0
+--- !u!65 &7311029336035877415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7311029336035877413}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 200, y: 400, z: 100}
+  m_Center: {x: 0, y: -425, z: 150}
 --- !u!114 &7461608711571629671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10665,6 +10699,44 @@ RectTransform:
   m_AnchoredPosition: {x: -1.5000687, y: 42.39998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8162488982905804776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855592342329022332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaTypeName: Cola
+  sodaSlotFuleLevel: 1000
+  sodaBottle: {fileID: 0}
+  sodaFillPerCall: 0.25
+  buttonPressed: 0
+--- !u!65 &8162488982905804777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855592342329022332}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 200, y: 400, z: 100}
+  m_Center: {x: -15, y: -425, z: 150}
 --- !u!33 &8176344791317116728
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -10703,6 +10775,44 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8234926218364533135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4709090153476345415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69780a3939adbfd4f86aacc2585e272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaTypeName: 7 Down
+  sodaSlotFuleLevel: 1000
+  sodaBottle: {fileID: 0}
+  sodaFillPerCall: 0.25
+  buttonPressed: 0
+--- !u!65 &8234926218364533136
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4709090153476345415}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 200, y: 400, z: 100}
+  m_Center: {x: 10, y: -425, z: 150}
 --- !u!1 &8403534583787814376
 GameObject:
   m_ObjectHideFlags: 0
