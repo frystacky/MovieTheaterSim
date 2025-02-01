@@ -9,7 +9,7 @@ public class SuppliableHandler : MonoBehaviour
     [Header("Supply object configurations")]
     [SerializeField] private float supplyDistance = 1f; //The distance the grabbed object needs to to to supply items
     private ItemObjectHandler thisItemObjectHandler; //link of the boxItems object child component
-    LayerMask layerMask; //layer needed on the object that is able to take supplys
+    [SerializeField] private LayerMask layerMask; //layer needed on the object that is able to take supplys
     private ItemObjectHandler hitItemObjectHandler; // will be set by raycast, the object able to be supplied
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
