@@ -41,12 +41,16 @@ public class ItemObjectHandler : MonoBehaviour
             if (gameObject.GetComponent<ItemInfo>().getItemType() == objectToAdd.GetComponent<ItemInfo>().getItemType())
             {
                 objectToAdd.transform.parent = itemSlot[stack.Count].transform;   //add to the next empty element
+                objectToAdd.transform.localPosition = Vector3.zero; //sets localpostion so item can be at parents location
+                objectToAdd.transform.localRotation = Quaternion.Euler(0, 90, 0); //zeros mostly to zero so item can have parent rotation
                 stack.Push(objectToAdd);
             }
         }
         else
         {
             objectToAdd.transform.parent = itemSlot[stack.Count].transform;   //add to the next empty element
+            objectToAdd.transform.localPosition = Vector3.zero; //sets localpostion so item can be at parents location
+            objectToAdd.transform.localRotation = Quaternion.Euler(0, 90, 0);   //zeros mostly to zero so item can have parent rotation
             stack.Push(objectToAdd);
         }
     }
